@@ -1,0 +1,64 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+  <!-- code for icons: -->
+  <h1>  
+    Here are the two info icons:  <i class="fa fa-info-circle" aria-hidden="true"></i> 
+    &nbsp;
+    <i class="fa fa-info" aria-hidden="true"></i>
+ </h1> 
+</div>
+
+<h1>  
+  {{title}}   
+</h1>  
+<!-- code for tabled stars: -->
+<br>  
+<table border=1>  
+  <caption>Frameworks Rating</caption>  
+  <tr>  
+    <td>Id</td>  
+    <td>Framework Name</td>  
+    <td>Rating</td>  
+  </tr>  
+  <tr *ngFor="let record of recordList">  
+    <td>{{record.Id}}</td>  
+    <td>{{record.Framework}}</td>  
+    <td>  
+      <a *ngFor="let item of record.myList; let i=index " (click)="setStarTable(record,i)">  
+        <i class="fa" [ngClass]="{'fa-star-o':item,'fa-star':!item}"></i>  
+      </a>  
+    </td>  
+  </tr>  
+</table> 
+
+<!-- code for stars with hover: -->
+<div class="stars container">
+  <h3>A few flavours of star ratings compatible with popular libraries</h3>
+  <div class="row">
+
+    <div class="col-md-4">
+      <section>
+        <bar-rating [(rate)]="cssRate" [max]="5"></bar-rating>
+        <p>CSS Stars and Star count: {{cssRate}}</p>
+      </section>
+    </div>
+
+    <div class="col-md-4">
+      <section>
+        <bar-rating [(rate)]="bootRate" [max]="5" [theme]="'bootstrap'"></bar-rating>
+        <p>Bootstrap and Star count: {{bootRate}}</p>
+      </section>
+    </div>
+
+    <div class="col-md-4">
+      <section>
+        <bar-rating [(rate)]="faRate" [max]="5" [theme]="'fontawesome'"></bar-rating>
+        <p>Fontawesome and Star count: {{faRate}}</p>
+      </section>
+    </div>
+  </div>
+
+<router-outlet></router-outlet>
